@@ -9,6 +9,8 @@ import android.widget.TextView;
 
 import com.tencent.mmkv.MMKV;
 
+import java.util.Arrays;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -56,6 +58,16 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //删除单个
+        kv.removeValueForKey("bool");
+        System.out.println("bool: " + kv.decodeBool("bool"));
+
+        //删除多个
+        kv.removeValuesForKeys(new String[]{"int", "long"});
+        System.out.println("allKeys: " + Arrays.toString(kv.allKeys()));
+
+        //查询是否存在
+        boolean hasBool = kv.containsKey("bool");
 
 //
 //        kv.encode("int", 1);//存int型
